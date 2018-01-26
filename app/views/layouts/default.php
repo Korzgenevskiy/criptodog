@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"> 
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> 
         <title><?php echo $title; ?></title>
     </head>
-    <body style="background: grey">
+    <body class="body">
         
+        <div class="container">
+            <div class="header">
+                <ul class="nav nav-pills pull-right">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    
+                </ul>
+                <h3 class="text-muted">Criptodog</h3>
+            </div>
+        </div>
+        <div>
         <?php echo $content; ?>
-        
+        </div>
     </body>
 </html>

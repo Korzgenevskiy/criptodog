@@ -1,11 +1,40 @@
+<!DOCTYPE html>
+<html>
+
 <p>Страница регистрации</p>
+<body>
 
+	<form method='post' class='reg-form'>
 
-<form>
-    <p>Login</p>
-    <p><inpute type="text"></p>
-    <p>Password</p>
-    <p><inpute type="text"></p>
-    <b><button> Регистрация <button> </b>
-        
-</form>
+		<div class='form-row'>
+			<label for='form_fname'>First Name: </label>
+    		<input type='text' id='form_fname' name='first_name'>
+  		</div>
+
+  		<div class='form-row'>
+    		<label for='form_sname'>Second Name: </label>
+    		<input type='text' id='form_sname' name='second_name'>
+		</div>
+
+		<div class='form-row'>
+			<label for='form_email'>Email: </label>
+			<input type='email' id='form_email' name='email'>
+		</div>
+
+		<div class='form-row'>
+			<label for='form_phone'>Phone: </label>
+			<input type='text' id='form_phone' name='phone'>
+		</div>
+
+		<div class='form-row'>
+			<label for='form_about'>About myself: </label>
+			<textarea id='form_about' name='about'></textarea>
+		</div>
+
+		<div class="form-row">
+			<input type="submit" value='Go'>
+		</div>
+
+	</form>
+
+</body>
