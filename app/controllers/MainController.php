@@ -14,7 +14,6 @@ class MainController extends Controller {
         $objectArticle = new Article();
         
       
-        
         $this->view->render('Главная страница', [
             'articles' => $objectArticle->getArticles(),
         ]);
@@ -24,14 +23,11 @@ class MainController extends Controller {
     /**
      * 
      */
-    public function articleAction($articleId = 1){
+    public function articleAction(){
         $objectArticle = new Article();
-        $articleId = $_GET['articleId'];
-        
-        
         
          $this->view->render('Статья', [
-            'articles' => $objectArticle->getArticle($articleId),
+            'articles' => $objectArticle->getArticle(),
         ]);
     }
     /**

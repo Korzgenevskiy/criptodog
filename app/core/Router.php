@@ -61,14 +61,14 @@ class Router {
                 $controller = new $path($this->params);
                 $controller->$action();
             } else {
-                echo 'Метод: '.$action.' не найден';
+                View::errorCode(404);
             }
         } else {
-            echo 'Класс: '.$path.' не найден';
+            View::errorCode(404);;
         }
             
     } else {
-        echo 'Маршрут не найден';
+        View::errorCode(404);;
     }
 
     

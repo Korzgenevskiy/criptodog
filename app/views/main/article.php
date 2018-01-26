@@ -1,5 +1,6 @@
 <p>Главная страница</p>
-<ul>
-    <?php echo $data['articles']; ?>
+<dev>
+    <?php debug($vars['articles']); ?>
+
+</dev>
     
-</ul>

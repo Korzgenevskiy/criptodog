@@ -1,6 +1,6 @@
 <p>Главная страница</p>
 <ul>
-    <?php foreach ($data['articles'] as $article) { ?>
+    <?php foreach ($vars['articles'] as $article) { ?>
     <li><?php echo $article['title']; ?></li>
     <?php } ?>
 </ul>

@@ -31,4 +31,9 @@ abstract class Controller {
         
     }
     
+    public function autoLoad($name) {
+        $path = 'app/'
+        
+    }
+    
 }

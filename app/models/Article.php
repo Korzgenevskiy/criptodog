@@ -11,9 +11,10 @@ class Article extends Model {
         return $this->db->fetchAll('select * from articles;');
     }
     
-    public function getArticle($articleId)
+    public function getArticle()
     {
-        return $this->db->fetchRow('select * from articles where id = '. $articleId);
+        $articleId = 4;
+        return $this->db->fetchAll('select * from articles where id ='. $articleId);
     }
     
     public function getLastArticle()

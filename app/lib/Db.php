@@ -21,7 +21,8 @@ class Db {
     protected $link;
     
     protected function __construct() {
-        $this->link = mysqli_connect("localhost", "root", "", 'blog');
+       $config = require 'app/config/dbconfig.php';
+        $this->link = mysqli_connect($config['host'],$config['user'],$config['dbpassword'],$config['dbname']);
     }
     
     public static function getInstance()

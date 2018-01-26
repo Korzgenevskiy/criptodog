@@ -19,18 +19,31 @@ class View {
      * Рендер страницы
      * 
      * @param string $title - title страницы
-     * @param array $data - данные для отображения
+     * @param array $vars - данные для отображения
      */
-    public function render(string $title, array $data = []) {
-        ob_start();
-        require 'app/views/'.$this->path.'.php';
-        $content = ob_get_clean();
-        require 'app/views/layouts/'.$this->layout.'.php';
+    public function render(string $title, array $vars = []) {
+        extract($vars);
         
+        if(file_exists('app/views/'.$this->path.'.php')){
+            ob_start();
+            require 'app/views/'.$this->path.'.php';
+            $content = ob_get_clean();
+            require 'app/views/layouts/'.$this->layout.'.php';
+        } else {
+            echo 'view not found'.$this->path;
+        }
     }
     
     public function getPath() {
         return $this->path;
     }
     
+    public static function errorCode($errorCodes) {
+        http_response_code();
+        $path = 'app/views/errors/'.$errorCodes.'.php';
+        if (file_exists($path)){
+            require $path;
+        }
+        exit();
+    }
 }
