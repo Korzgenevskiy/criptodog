@@ -9,7 +9,8 @@ class View {
     public $route;
     public $layout = 'default';
     
-    public function __construct($route){
+    public function __construct($route)
+    {
         $this->route = $route;
         $this->path = $route['controller'].'/'.$route['action'];
         
@@ -21,8 +22,11 @@ class View {
      * @param string $title - title страницы
      * @param array $vars - данные для отображения
      */
-    public function render(string $title, array $vars = []) {
-        extract($vars);
+    public function render(string $title, array $vars = []) 
+    {
+        foreach ($vars as $key => $value) {
+            $this->$key = $value;
+        }
         
         if(file_exists('app/views/'.$this->path.'.php')){
             ob_start();
@@ -34,11 +38,13 @@ class View {
         }
     }
     
-    public function getPath() {
+    public function getPath() 
+    {
         return $this->path;
     }
     
-    public static function errorCode($errorCodes) {
+    public static function errorCode($errorCodes) 
+    {
         http_response_code();
         $path = 'app/views/errors/'.$errorCodes.'.php';
         if (file_exists($path)){

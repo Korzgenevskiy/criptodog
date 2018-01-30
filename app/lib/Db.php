@@ -38,8 +38,8 @@ class Db {
         
     }
     
-    public function fetchRow($sql) {
-        return mysqli_fetch_row($this->buildQuery($sql));
+    public function fetchArray($sql) {
+        return mysqli_fetch_array($this->buildQuery($sql), MYSQLI_ASSOC);
     }
     
     public function fetchAll($sql) {

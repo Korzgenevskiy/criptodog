@@ -23,17 +23,32 @@ abstract class Controller {
      * @var View
      */
     public $view;
+    
+    protected $_params;
 
 
-    public function __construct($route){
-        $this->route = $route;
+    public function __construct($route)
+    {
+        $this->_params = $route;
         $this->view = new View($route);
+        
+        //debug($this->_params);
         
     }
     
-    public function autoLoad($name) {
-        $path = 'app/'
+    
+    /**
+     * 
+     * @param type $value
+     * @param type $default
+     */
+    protected function _getParam($value, $default = null)
+    {
+        if (!empty($this->_params[':'.$value])) {
+            return $this->_params[':'.$value];
+        }
         
+        return $default;
     }
     
 }

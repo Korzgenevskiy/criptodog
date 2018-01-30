@@ -19,20 +19,38 @@ class Router {
     protected $params =[];        
     
     
-    public function __construct() {
+    public function __construct() 
+    {
         $arr = require 'app/config/routes.php';
             foreach ($arr as $key => $val) {
-            $this->add($key, $val);
+            $this->_add($key, $val);
+            
+            
         }
+        
     }
     
     
-    public function add($route,$params) {
-        $route = '#^'.$route.'$#';
+    protected function _add($route, $params) 
+    {
+        foreach ($params as $key => $value) {
+            
+            if (0 === strpos($key, ':')) {
+                
+                $route = str_replace($key, $value, $route);
+                
+                
+            }
+        }
+                $route = '#^'.$route.'$#';
         $this->routes[$route] = $params;
+        
     }
     
-    public function match() {
+    
+    
+    protected function _match() 
+    {
         $url = trim($_SERVER['REQUEST_URI'], '/');
         $url = parse_url($url);
         if (!empty($url)) {
@@ -43,34 +61,48 @@ class Router {
         }
         
         foreach ($this->routes as $route => $params){
-            if (preg_match($route, $url, $matches)){
+            if (preg_match($route, $url, $matches)) {
+                
+                $paramNumber = 1;
+                foreach ($params as $key => &$param) {
+                    if (0 === strpos($key, ':')) {
+                        $param = $matches[$paramNumber];
+                        $paramNumber++;
+                    }
+                    
+                    
+                }
+                
                 $this->params = $params;
                 return true;
             }
             
         }
+        
         return false;
+        
     }
 
-    public function run() {
-        if($this->match()){
-        $path = 'app\controllers\\'.ucfirst($this->params['controller']).'Controller';
-        if(class_exists($path)){
-            $action = $this->params['action'].'Action';
-            if (method_exists($path, $action)){
-                $controller = new $path($this->params);
-                $controller->$action();
+    public function run() 
+    {
+        if($this->_match()) {
+            $path = 'app\controllers\\'.ucfirst($this->params['controller']).'Controller';
+            if(class_exists($path)){
+                $action = $this->params['action'].'Action';
+                
+                if (method_exists($path, $action)){
+                    $controller = new $path($this->params);
+                    $controller->$action();
+                } else {
+                    View::errorCode(404);
+                }
             } else {
-                View::errorCode(404);
+                View::errorCode(404);;
             }
+
         } else {
             View::errorCode(404);;
         }
-            
-    } else {
-        View::errorCode(404);;
+        
     }
-
-    
-}
 }

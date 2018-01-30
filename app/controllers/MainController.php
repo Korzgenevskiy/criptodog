@@ -10,7 +10,8 @@ class MainController extends Controller {
     /**
      * 
      */
-    public function indexAction(){
+    public function indexAction()
+    {
         $objectArticle = new Article();
         
       
@@ -23,17 +24,20 @@ class MainController extends Controller {
     /**
      * 
      */
-    public function articleAction(){
-        $objectArticle = new Article();
+    public function articleAction()
+    {
+        $id = $this->_getParam('id');
         
+        $objectArticle = new Article();
          $this->view->render('Статья', [
-            'articles' => $objectArticle->getArticle(),
+            'articles' => $objectArticle->getArticle($id),
         ]);
     }
     /**
      * 
      */
-    public function contactsAction(){
+    public function contactsAction()
+    {
         $this->view->render('Контакты');;
     }
     

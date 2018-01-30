@@ -1,6 +1,9 @@
-<p>Главная страница</p>
+<p>Статьи</p>
 <dev>
-    <?php debug($vars['articles']); ?>
+    <?php echo 'Название статьи: '. $this->articles['title']; ?> <br>
 
+    <?php echo $this->articles['content']; ?><br>
+
+    <?php echo 'дата добавления статьи: '. $this->articles['date']; ?><br>
 </dev>
     
