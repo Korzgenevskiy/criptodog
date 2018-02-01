@@ -43,5 +43,6 @@ return[
         'controller' => 'main',
         'action' => 'contacts',
     ],
+    
 ];
 

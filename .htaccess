@@ -1,9 +1,11 @@
 RewriteEngine On
 
-
-RewriteCond %{REQEST_FILENAME} !-d
-RewriteCond %{REQEST_FILENAME} !-f
-RewriteCond %{REQEST_FILENAME} !-l
+RewriteCond ${REQUEST_URI} ^.+$
+RewriteCond %{REQUEST_FILENAME} \.(gif|jpe?g|png|js|css|swf|php|ico|txt|pdf|xml)$ [OR]
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d [OR]
+RewriteCond %{REQUEST_FILENAME} -l
+RewriteRule ^ - [L]
 
 
 RewriteRule ^(.+)$ index.php

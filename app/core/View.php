@@ -1,7 +1,8 @@
 <?php
 
 namespace app\core;
-require 'app/lib/Smarty.class.php';
+
+
 
 class View {
     
@@ -13,6 +14,7 @@ class View {
     {
         $this->route = $route;
         $this->path = $route['controller'].'/'.$route['action'];
+        
         
     }
     
@@ -33,6 +35,7 @@ class View {
             require 'app/views/'.$this->path.'.php';
             $content = ob_get_clean();
             require 'app/views/layouts/'.$this->layout.'.php';
+            
         } else {
             echo 'view not found'.$this->path;
         }
