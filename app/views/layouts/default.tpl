@@ -65,7 +65,7 @@
 
           <!-- Blog Post -->
           <div>
-        <?php echo $content; ?>
+        {$content}
         </div>
 
         </div>

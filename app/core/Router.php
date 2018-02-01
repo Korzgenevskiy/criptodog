@@ -13,86 +13,86 @@ namespace app\core;
  *
  * @author VLADIMIR
  */
-class Router {
-    
-    protected $routes =[];
-    protected $params =[];        
-    
-    
-    public function __construct() 
+class Router
+{
+
+    protected $routes = [];
+    protected $params = [];
+
+
+    public function __construct()
     {
         $arr = require 'app/config/routes.php';
-            foreach ($arr as $key => $val) {
+        foreach ($arr as $key => $val) {
             $this->_add($key, $val);
-            
-            
+
+
         }
-        
+
     }
-    
-    
-    protected function _add($route, $params) 
+
+
+    protected function _add($route, $params)
     {
         foreach ($params as $key => $value) {
-            
+
             if (0 === strpos($key, ':')) {
-                
+
                 $route = str_replace($key, $value, $route);
-                
-                
+
+
             }
         }
-                $route = '#^'.$route.'$#';
+        $route = '#^' . $route . '$#';
         $this->routes[$route] = $params;
-        
+
     }
-    
-    
-    
-    protected function _match() 
+
+
+    protected function _match()
     {
         $url = trim($_SERVER['REQUEST_URI'], '/');
         $url = parse_url($url);
         if (!empty($url)) {
-            $url = array_shift($url);    
+            $url = array_shift($url);
             $url = trim($url, '/');
         } else {
             $url = '';
         }
-        
-        foreach ($this->routes as $route => $params){
+
+        foreach ($this->routes as $route => $params) {
             if (preg_match($route, $url, $matches)) {
-                
+
                 $paramNumber = 1;
                 foreach ($params as $key => &$param) {
                     if (0 === strpos($key, ':')) {
                         $param = $matches[$paramNumber];
                         $paramNumber++;
                     }
-                    
-                    
+
+
                 }
-                
+
                 $this->params = $params;
                 return true;
             }
-            
+
         }
-        
+
         return false;
-        
+
     }
 
-    public function run() 
+    public function run()
     {
-        if($this->_match()) {
-            $path = 'app\controllers\\'.ucfirst($this->params['controller']).'Controller';
-            if(class_exists($path)){
-                $action = $this->params['action'].'Action';
-                
-                if (method_exists($path, $action)){
+        if ($this->_match()) {
+            $path = 'app\controllers\\' . ucfirst($this->params['controller']) . 'Controller';
+            if (class_exists($path)) {
+                $action = $this->params['action'] . 'Action';
+
+                if (method_exists($path, $action)) {
                     $controller = new $path($this->params);
-                    $controller->$action();
+                    echo $controller->$action();
                 } else {
                     View::errorCode(404);
                 }
@@ -103,6 +103,6 @@ class Router {
         } else {
             View::errorCode(404);;
         }
-        
+
     }
 }

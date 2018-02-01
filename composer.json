@@ -1,0 +1,34 @@
+{
+	"name": "Korzgenevskiy/criptodog",
+	"type": "project",
+	"description": "criptodog",
+	"keywords": [
+		"criptodog",
+		"php"
+	],
+	"homepage": "http://criptodog.ru",
+	"license": [
+		"proprietary"
+	],
+	"require": {
+		"kint-php/kint": "~2.2",
+		"smarty/smarty": "~3.1"
+	},
+	"config": {
+		"secure-http": false,
+		"vendor-dir": "vendor/"
+	},
+	"autoload": {
+		"psr-0": {
+			"Plugin_": "application/plugins/",
+			"Model_": "application/models/",
+			"Business_": "application/business/",
+			"Component_": "application/components/",
+			"Trait_": "application/traits/"
+		}
+	},
+	"include-path": [
+		"app/core/",
+		"app/models/"
+	]
+}
