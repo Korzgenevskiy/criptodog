@@ -13,9 +13,8 @@ class MainController extends Controller {
     public function indexAction()
     {
         $objectArticle = new Article();
-        
-      
-        $this->view->render('Главная страница', [
+
+        return $this->view->displayLayout()->render('Главная страница', [
             'articles' => $objectArticle->getArticles(),
         ]);
     }
