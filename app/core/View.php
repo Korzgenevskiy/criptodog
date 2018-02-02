@@ -2,7 +2,12 @@
 
 namespace app\core;
 
-
+/**
+ * 
+ * 
+ * 
+ * 
+ */
 class View
 {
 
@@ -39,7 +44,7 @@ class View
 
             // Layout
             ob_start();
-            $content = ob_get_clean();
+            $pageContent = ob_get_clean();
             if ($this->_displayLayout) {
                 $smartyLayout = new \Smarty();
                 $smartyLayout->assign('content', $content);

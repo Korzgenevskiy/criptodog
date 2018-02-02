@@ -1,18 +1,18 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Содержит конфигурации для подключения к базе данных представленную в виде массива
+ * host - имя хоста
+ * dbname - имя базы данных
+ * dbpassword - пароль для подключения к базе данных
+ * user - имя пользователя бд
  */
 
-return [
-    'host' => 'localhost',
-    'dbname' => 'blog',
-    'dbpassword' => '',
-    'user' => 'root',
-    
-    
-    
-];
+    return 
+    [
+        'host'       => 'localhost',
+        'dbname'     => 'blog',
+        'dbpassword' => '',
+        'user'       => 'root',
+    ];
 

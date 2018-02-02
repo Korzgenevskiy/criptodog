@@ -2,7 +2,7 @@
 
 namespace app\core;
 
-use app\lib\Db;
+use app\core\Db;
 
 class Model {
     

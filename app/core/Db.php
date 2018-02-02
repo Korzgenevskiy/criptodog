@@ -7,7 +7,7 @@
  */
 
 
-namespace app\lib;
+namespace app\core;
 
 /**
  * Description of DB

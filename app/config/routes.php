@@ -1,48 +1,69 @@
 <?php
 
-return[
-    'account/login' => [
-        'controller' => 'account',
-        'action' => 'login',
-    ],
+/**
+ * Содержит карту маршрутов проекта, представленную в виде ассоциативного массива
+ * controller - имя котроллера
+ * action - названия экшена (действия)
+ * все наименования после названия контроллера и экшена - параметры 
+ */
+    return
+    [
+        'account/login' => 
+        [
+            'controller'    => 'account', 
+            'action'        => 'login', 
+        ], 
     
-    'account/register' => [
+        'account/registration' => 
+        [
         'controller' => 'account',
-        'action' => 'register',
-    ],
+        'action'     => 'registration',
+        ],
     
-    '' => [
+    '' => 
+        [
         'controller' => 'main',
-        'action' => 'index',
-    ],
-    'main' => [
+        'action'     => 'index',
+        ], 
+        
+    'main' => 
+        [
         'controller' => 'main',
-        'action' => 'index',
-    ],
-    'main/article' => [
+        'action'     => 'index',
+        ], 
+        
+    'main/article' => 
+        [
         'controller' => 'main',
-        'action' => 'article',
-    ],
-    'article/:id' => [
+        'action'     => 'article',
+        ],
+        
+    'article/:id' => 
+        [
         'controller' => 'main',
         'action'     => 'article',
         ':id'        => '(\d{0,})',
-    ],
-    'article/:id:/:id2:/:id3:' => [
-        'controller' => 'main',
-        'action'     => 'article',
-        ':id:'        => '(\d{0,})',
+        ],
+        
+    'article/:id:/:id2:' => 
+        [
+        'controller'   => 'main',
+        'action'       => 'article',
+        ':id:'         => '(\d{0,})',
         ':id2:'        => '(\d{0,})',
-        ':id3:'        => '(\d{0,})',
-    ],
-    'article' => [
+        ],
+        
+    'article' => 
+        [
         'controller' => 'main',
         'action'     => 'article',
-    ],
-    'contacts' => [
+        ],
+        
+    'contacts' => 
+        [
         'controller' => 'main',
-        'action' => 'contacts',
-    ],
+        'action'     => 'contacts',
+        ],
     
 ];
 
